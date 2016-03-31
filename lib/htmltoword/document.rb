@@ -74,7 +74,7 @@ module Htmltoword
 
     def replace_file(html, file_name = Document.doc_xml_file, extras = false)
       html = html.presence || '<body></body>'
-      source = Nokogiri::HTML(html.gsub(/>\s+</, '><'))
+      source = Nokogiri::HTML(html)
       transform_and_replace(source, Document.numbering_xslt, Document.numbering_xml_file)
       transform_and_replace(source, Document.xslt_template(extras), file_name, extras)
     end
